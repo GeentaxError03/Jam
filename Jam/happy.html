@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>For Jamjam</title>
+        <style>
+            /* Set the background image */
+            body {
+                margin: 0;
+                padding: 0;
+                background-image: url('cinnabg.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Arial, sans-serif;
+            }
+
+            /* Go Back button */
+            .go-back {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background: #ff69b4; /* Cute pink color */
+                color: white;
+                font-family: 'Comic Sans MS', cursive, sans-serif; /* Cute font style */
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for highlighting */
+                cursor: pointer;
+                text-decoration: none;
+                text-align: center;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .go-back:hover {
+                transform: scale(1.1); /* Slight zoom effect on hover */
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+            }
+
+            /* Centered container */
+            .container {
+                width: 700px; /* Further enlarged container width */
+                padding: 40px; /* Increased padding */
+                background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+                border-radius: 16px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Add shadow for highlighting */
+                display: flex;
+                flex-direction: column; /* Stack the text and GIFs vertically */
+                align-items: center;
+                justify-content: center;
+                gap: 20px; /* Space between the text and the GIFs */
+            }
+
+            /* Large text at the top */
+            .container h1 {
+                font-size: 24px; /* Large font size */
+                font-weight: bold;
+                color: #ff69b4; /* Cute pink color */
+                font-family: 'Comic Sans MS', cursive, sans-serif; /* Cute font style */
+                text-align: center;
+                margin: 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+            }
+
+            /* Wrapper for each GIF and text */
+            .gif-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Style for the GIFs */
+            .gif-wrapper img {
+                width: 200px; /* Further enlarged size of the GIFs */
+                height: 200px; /* Ensure both GIFs have the same height */
+                object-fit: cover; /* Ensure consistent sizing */
+                
+            }
+
+            /* Cute text style */
+            .gif-wrapper p {
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #ff69b4; /* Cute pink color */
+                font-family: 'Comic Sans MS', cursive, sans-serif; /* Cute font style */
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Add a slight shadow for depth */
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Go Back button -->
+        <a href="main.html" class="go-back">Go Back</a>
+
+        <!-- Centered container -->
+        <div class="container">
+            <h1>when cinna is happy, pocchaco likes it :></h1>
+            <div class="gif-wrapper">
+                <img src="cinnahappy.gif" alt="Cinnahappy">
+                <p>this is you</p>
+            </div>
+            <div class="gif-wrapper">
+                <img src="pocchacolike.gif" alt="Pocchacolike">
+                <p>this is me</p>
+            </div>
+        </div>
+    </body>
+</html>

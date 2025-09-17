@@ -123,6 +123,66 @@
             text-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
+        /* Cute floating hearts */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff8fb1;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(3) {
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(4) {
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(5) {
+            left: 90%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
         .fade-out {
             animation: fadeOut 1s forwards;
         }
@@ -138,9 +198,15 @@
     </style>
 </head>
 <body>
+    <div class="floating-hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
     <div class="container">
-
-
         <div class="stage">
             <div class="envelope" id="envelope" tabindex="0" role="button" aria-pressed="false" aria-label="Open letter">
                 <div class="flap" aria-hidden="true"></div>

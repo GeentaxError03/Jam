@@ -221,7 +221,7 @@
         <img src="cinnapeonies.jpg" alt="Stamp">
       </div>
       <h1 id="letter-title">A cutesy little note</h1>
-      <div class="meta">For my future babygirl RMT sa NYC</div>
+      <div class="meta">For my future babygirl RMT sa NYC who loves cinna and peonies</div>
 
       <div class="body">
 Dear Jamjam,
@@ -238,7 +238,7 @@ Gee♡
       <div class="actions">
         <p>Is this worth a matcha or Cinnabon date?</p>
         <div class="btn-container">
-          <button class="btn yes" type="button" aria-label="Yes">Yes</button>
+          <button class="btn yes" type="button" aria-label="Yes" onclick="redirectToHappy()">Yes</button>
           <div class="no-wrapper">
             <button class="btn no" type="button" aria-label="No">No</button>
             <span class="hidden-text">:pp</span>
@@ -251,6 +251,16 @@ Gee♡
   <!-- Multiple Cinnariding GIFs -->
   <div class="cinnariding-container">
     <div class="cinnariding-wrapper">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
       <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
       <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
       <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
@@ -276,6 +286,11 @@ Gee♡
         noButton.classList.remove('hidden');
       }
     });
+
+    // Redirect to happy.html when the Yes button is clicked
+    function redirectToHappy() {
+      window.location.href = "happy.html";
+    }
   </script>
 </body>
 </html>
