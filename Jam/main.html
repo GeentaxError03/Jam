@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Jamjam</title>
+  <style>
+    :root{
+      --card-max-w: 760px;
+      --card-pad: 36px;
+      --card-radius: 18px;
+      --gradient-start: #ddf3fe; /* Light blue */
+      --gradient-end: #f3c1be;   /* Soft pink */
+      --paper: #fffefb;
+      --text: #2c2c2c;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+      background-image: url("cinnabg.png");
+      background-size: cover;
+      background-position: center 80%; /* Adjusted to move the image lower */
+      background-repeat: no-repeat;
+      min-height: 100vh; /* Ensures it fills the viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0; /* Remove any padding */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* centered translucent container with gradient background */
+    .container {
+      width: 100%;
+      max-width: var(--card-max-w);
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      border-radius: var(--card-radius);
+      padding: var(--card-pad);
+      box-shadow: 0 12px 30px rgba(20,20,30,0.14);
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(6px) saturate(120%);
+      -webkit-backdrop-filter: blur(6px) saturate(120%);
+      position: relative;
+    }
+
+    .letter {
+      background: linear-gradient(180deg, var(--paper), #fff);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: inset 0 6px 18px rgba(0,0,0,0.03);
+      position: relative; /* To position the stamp inside */
+    }
+
+    .letter h1 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      letter-spacing: 0.2px;
+      color: #c85d7a;
+      font-weight: 700;
+      font-family: "Segoe UI", system-ui;
+    }
+
+    .letter .meta {
+      margin-bottom: 18px;
+      color: #6b6b6b;
+      font-size: 13px;
+    }
+
+    .letter .body {
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.6;
+      font-size: 16px;
+      white-space: pre-wrap;
+      color: var(--text);
+    }
+
+    .stamp {
+      position: absolute;
+      top: -20px; /* Adjust to position the stamp */
+      right: -20px; /* Adjust to position the stamp */
+      width: 100px; /* Set the size of the stamp */
+      height: 100px;
+      border-radius: 50%; /* Make it circular */
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .stamp img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the image fits nicely */
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .actions p {
+      margin-bottom: 16px;
+      font-size: 14px;
+      font-weight: 100;
+      color: #2c2c2c;
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 40px; /* Increased gap to move buttons farther apart */
+    }
+
+    .btn {
+      background: #ff9bbd;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255,140,170,0.18);
+      font-weight: 600;
+      position: relative;
+      transition: opacity 0.2s ease; /* Smooth transition for hiding */
+    }
+
+    .no-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hidden-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      font-weight: bold;
+      color: #c85d7a;
+      opacity: 0; /* Initially hidden */
+      pointer-events: none; /* Prevent interaction */
+      transition: opacity 0.2s ease; /* Smooth fade-in effect */
+    }
+
+    .btn.no.hidden + .hidden-text {
+      opacity: 1; /* Show the text when the button is hidden */
+    }
+
+    .btn.no {
+      opacity: 1; /* Fully visible by default */
+    }
+
+    .btn.hidden {
+      opacity: 0; /* Hidden when the class is added */
+      pointer-events: none; /* Prevent interaction when hidden */
+    }
+
+    /* Animation for multiple cinnariding.gif */
+    .cinnariding-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+    }
+
+    .cinnariding-wrapper {
+      display: flex;
+      gap: 100px; /* Space between the GIFs */
+      animation: moveLeft 10s linear infinite; /* Move from right to left */
+    }
+
+    .cinnariding {
+      width: 120px; /* Adjust the size of the gif */
+      height: auto;
+    }
+
+    @keyframes moveLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @media (max-width: 520px) {
+      :root {
+        --card-pad: 20px;
+      }
+      .letter {
+        padding: 18px;
+      }
+      .letter h1 {
+        font-size: 18px;
+      }
+      .letter .body {
+        font-size: 15px;
+      }
+      .actions p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-label="Letter container">
+    <article class="letter" role="article" aria-labelledby="letter-title">
+      <div class="stamp">
+        <img src="cinnapeonies.jpg" alt="Stamp">
+      </div>
+      <h1 id="letter-title">A cutesy little note</h1>
+      <div class="meta">For my future babygirl RMT sa NYC</div>
+
+      <div class="body">
+Dear Jamjam,
+
+I've been meaning to tell you something simple and true: you make ordinary days feel brighter. Your laugh, your kaartehan, and the way you make kwentos immersive means more to me than I can say. You've been on my mind a lot lately, and I just wanted to put it into words.
+
+Good luck on your first day at work! Galingan mo and please wag ka magpapalipas ng gutom hehe.
+
+You've got this, and I've got you.
+Always,
+Gee♡
+      </div>
+
+      <div class="actions">
+        <p>Is this worth a matcha or Cinnabon date?</p>
+        <div class="btn-container">
+          <button class="btn yes" type="button" aria-label="Yes">Yes</button>
+          <div class="no-wrapper">
+            <button class="btn no" type="button" aria-label="No">No</button>
+            <span class="hidden-text">:pp</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Multiple Cinnariding GIFs -->
+  <div class="cinnariding-container">
+    <div class="cinnariding-wrapper">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+      <img src="cinnariding.gif" alt="Cinnariding" class="cinnariding">
+    </div>
+  </div>
+
+  <script>
+    const noButton = document.querySelector('.btn.no');
+
+    document.addEventListener('mousemove', (e) => {
+      const buttonRect = noButton.getBoundingClientRect();
+
+      // Calculate the distance between the mouse and the button
+      const distanceX = Math.abs(e.clientX - (buttonRect.left + buttonRect.width / 2));
+      const distanceY = Math.abs(e.clientY - (buttonRect.top + buttonRect.height / 2));
+
+      // If the mouse is within 50px of the button, hide it
+      if (distanceX < 50 && distanceY < 50) {
+        noButton.classList.add('hidden');
+      } else {
+        noButton.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

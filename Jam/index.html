@@ -1,0 +1,168 @@
+<!Doctype HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamjam</title>
+    <style>
+        :root{
+            --env-w: 420px; /* Increased width */
+            --env-h: 280px; /* Increased height */
+            --accent: #ff8fb1;         /* cute pink */
+            --accent-2: #ffd1e6;       /* soft pink */
+            --paper: #fffdfb;
+            --shadow: rgba(20,20,30,0.12);
+        }
+        *{box-sizing: border-box}
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+            background-image: url('cinnabg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .container{
+            text-align: center;
+            padding: 28px;
+        }
+
+        .hint{
+            color: #6b6b6b;
+            margin-bottom: 18px;
+            user-select: none;
+            font-size: 14px;
+        }
+
+        .stage{
+            perspective: 1200px;
+        }
+
+        .envelope{
+            width: var(--env-w);
+            height: var(--env-h);
+            position: relative;
+            margin: 0 auto;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 320ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms;
+            will-change: transform;
+            border-radius: 14px;
+        }
+
+        .envelope:hover{
+            transform: translateY(-8px) rotateX(4deg);
+            box-shadow: 0 20px 40px rgba(20,20,30,0.12);
+        }
+
+        .envelope .body{
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(1200px 400px at 10% 10%, rgba(255,140,180,0.06), transparent 10%),
+                        linear-gradient(180deg,#fffefc,#fff7fb 60%);
+            border-radius: 12px;
+            box-shadow: 0 18px 38px var(--shadow);
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        .flap{
+            position: absolute;
+            top: -2%;
+            left: 0;
+            width: 100%;
+            height: 64%;
+            transform-origin: top center;
+            background: linear-gradient(180deg,var(--accent-2),#fffefc);
+            border-bottom-left-radius: 22px;
+            border-bottom-right-radius: 22px;
+            z-index: 6;
+            transition: transform 620ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 28px;
+        }
+
+        .seal{
+            position: absolute;
+            left: 50%;
+            top: 46%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: radial-gradient(circle at 35% 30%, #fff6f9, #ffd8e6 45%, var(--accent) 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12), inset 0 -6px 10px rgba(0,0,0,0.04);
+            z-index: 7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center;
+            transition: transform 420ms cubic-bezier(.2,.9,.3,1);
+            font-size: 18px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .seal::before{
+            content: "❤";
+            transform: scale(1.05);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="stage">
+            <div class="envelope" id="envelope" tabindex="0" role="button" aria-pressed="false" aria-label="Open letter">
+                <div class="flap" aria-hidden="true"></div>
+                <div class="seal" aria-hidden="true"></div>
+                <div class="body" aria-hidden="true"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const env = document.getElementById('envelope');
+
+            function openEnvelope() {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 1000); // Wait for the fade-out animation to complete
+            }
+
+            env.addEventListener('click', openEnvelope);
+        })();
+    </script>
+</body>
+</html>
